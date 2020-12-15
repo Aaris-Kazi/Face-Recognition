@@ -25,7 +25,7 @@ known_faces = [
 
 test_image = fr.load_image_file('./test.jpg')
 test_location = fr.face_locations(test_image)
-test_encoded = fr.face_encodings(test_image, test_location)[0]
+test_encoded = fr.face_encodings(test_image, test_location)
 
 pil_image = Image.fromarray(test_image)
 draw = ImageDraw.Draw(pil_image)
@@ -33,11 +33,10 @@ draw = ImageDraw.Draw(pil_image)
 for (top, right, bottom, left) , face_encode in zip(test_location, test_encoded) :
     match = fr.compare_faces( known_faces_encoding,face_encode)
     name = "Unknown"
-    distance = fr.face_distance(known_faces_encoding,face_encode)
-    best = np.argmin(distance)
-    print(match[0])
+    
+    print(match)
     if True in match :
-        match_name = match.index(best)
+        match_name = match.index(True)
         name = known_faces[match_name]
         print('Know')
         draw.rectangle(( (left, top), (right, bottom)), outline=(0,0,0))
