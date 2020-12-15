@@ -38,7 +38,7 @@ for (top, right, bottom, left) , face_encode in zip(test_location, test_encoded)
     if True in match :
         match_name = match.index(True)
         name = known_faces[match_name]
-        print('Know')
+        print('Known')
         draw.rectangle(( (left, top), (right, bottom)), outline=(0,0,0))
         width, height =  draw.textsize(name)
         draw.rectangle(((left, bottom - height - 10), (right, bottom)), fill=(0,0,0),
