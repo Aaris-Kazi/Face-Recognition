@@ -3,13 +3,13 @@ import face_recognition as fr
 import numpy as np
 
 img = fr.load_image_file('./faces/bill gates.jpg')
-encoded = fr.face_encodings(img)
+encoded = fr.face_encodings(img)[0]
 
 img1 = fr.load_image_file('./faces/elon musk.jpg')
-encoded1 = fr.face_encodings(img1)
+encoded1 = fr.face_encodings(img1)[0]
 
 img2 = fr.load_image_file('./faces/donald trump.jpg')
-encoded2 = fr.face_encodings(img2)
+encoded2 = fr.face_encodings(img2)[0]
 
 known_faces_encoding = [
     encoded,
@@ -36,7 +36,7 @@ for (top, right, bottom, left) , face_encode in zip(test_location, test_encoded)
     distance = fr.face_distance(known_faces_encoding,face_encode)
     best = np.argmin(distance)
     print(match[0])
-    if "True" in match :
+    if True in match :
         match_name = match.index(best)
         name = known_faces[match_name]
         print('Know')
