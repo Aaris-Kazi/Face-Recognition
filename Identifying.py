@@ -30,13 +30,13 @@ test_encoded = fr.face_encodings(test_image, test_location)[0]
 pil_image = Image.fromarray(test_image)
 draw = ImageDraw.Draw(pil_image)
 
-for (top, right, bottom, left), face_encode in zip(test_location, test_encoded) :
+for (top, right, bottom, left) , face_encode in zip(test_location, test_encoded) :
     match = fr.compare_faces( known_faces_encoding,face_encode)
     name = "Unknown"
     distance = fr.face_distance(known_faces_encoding,face_encode)
     best = np.argmin(distance)
-
-    if match[best] :
+    print(match[0])
+    if "True" in match :
         match_name = match.index(best)
         name = known_faces[match_name]
         print('Know')

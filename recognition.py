@@ -14,7 +14,7 @@ unknown_encoded = face_recognition.face_encodings(unknow_images)[0]
 
 # Comparing the two images
 results = face_recognition.compare_faces([encoded], unknown_encoded)
-
+print(results)
 if results[0] :
     print('This is a match')
 else:
